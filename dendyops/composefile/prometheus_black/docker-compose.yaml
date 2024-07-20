@@ -1,0 +1,14 @@
+version: "3"
+services:
+  blackbox:
+    container_name: blackbox
+    image: prom/blackbox-exporter
+    #network_mode: host
+    restart: always
+    ports:
+      - 127.0.0.1:9115:9115
+    volumes:
+    - ./blackbox.yml:/config/blackbox.yml
+    command:
+      --config.file=/config/blackbox.yml
+
