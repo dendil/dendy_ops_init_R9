@@ -3,7 +3,10 @@
 
 
 ## Get started
-only for Cents7
+DO not use updating
+
+only for rocky linux 9
+
 ## Install Git
 
 ```bash

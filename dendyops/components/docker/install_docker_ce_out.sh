@@ -15,13 +15,13 @@ yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 
-yum makecache fast
+
 
 install_path="$1"
 if [ -n "${install_path}" ] ; then
-  yum -y install docker-ce
+  yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-  innerip=$(ip a  |egrep 'eth0|ens32|ens33|eno1|eno2' |grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' |awk '{print $2}')
+  innerip=$(ip a  |egrep 'eth0|ens*|eno*|enp*' |grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' |awk '{print $2}')
   _bip_4=` echo $innerip|awk -F. '{print$4}'`
   mkdir -p /etc/docker
   cat > /etc/docker/daemon.json << EOF
@@ -56,3 +56,4 @@ fi
 ../utils/start_service.sh docker
 
 docker version
+echo 'not need install docker-compose'
