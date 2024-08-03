@@ -11,10 +11,10 @@ only for rocky linux 9
 
 ```bash
 yum install git -y
-[ -L /tmp/dendy_ops_init_C7  ] && rm -fr /tmp/dendy_ops_init_C7
-t_dir=`mktemp -d -t  den_ops.XXXXXX` &&  ln -s $t_dir /tmp/dendy_ops_init_C7
-git clone https://github.com/dendil/dendy_ops_init_C7.git $t_dir
-cd  /tmp/dendy_ops_init_C7
+[ -L /tmp/dendy_ops_init_R9  ] && rm -fr /tmp/dendy_ops_init_R9
+t_dir=`mktemp -d -t  den_ops.XXXXXX` &&  ln -s $t_dir /tmp/dendy_ops_init_R9
+git clone https://github.com/dendil/dendy_ops_init_R9.git $t_dir
+cd  /tmp/dendy_ops_init_R9
 find . -name '*.sh' -exec chmod u+x {} \;
 
 bash init.sh out
