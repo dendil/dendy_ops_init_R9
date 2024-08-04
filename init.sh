@@ -471,11 +471,11 @@ function config_yum(){
     Msg "$SOFT installed"
 }
 function install_tools(){
- 	SOFT=" lrzsz dos2unix ntp gcc bc tcl  expect rsync chrony vim \
+ 	SOFT=" lrzsz dos2unix  gcc bc tcl  expect rsync chrony vim \
       wget bash-completion lrzsz nmap  tree htop iftop \
-      net-tools python3  yum-utils curl bind-utils unzip mtr tailf net-tools jq "
+      net-tools python3  yum-utils curl bind-utils unzip mtr  net-tools jq "
     yum install epel-release -y 
-    yum install  $SOFT  -y >>/dev/null 2>&1 &
+    yum install  -y $SOFT  
     Msg "$SOFT installed"
 }
 function set_default_target(){

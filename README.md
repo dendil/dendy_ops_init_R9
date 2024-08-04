@@ -40,7 +40,7 @@ bash init.sh add_scan_sshd
 
 
 
-## Init centos7
+## Init R9
 
 初始化项目
 
@@ -116,12 +116,7 @@ Install Docker latest version:
 # /opt/dendyops/components/docker-compose/install_docker_compose.sh 1.24.0
 /opt/dendyops/components/docker-compose/install_docker_compose.sh <version>
 ```
-### Add juna PublicKey
-```bash
-/opt/dendyops/components/juna/pubkey/add_keys.sh
 
-
-```
 
 
 
