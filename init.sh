@@ -594,14 +594,14 @@ function main(){
     #check_folder /backup
     #关闭selinux
     selinux
-    boot_centos7
+    # boot_centos7
     # 关闭防火墙
     close_iptables
     #清除版本信息（安全操作） 一般不开启
     #HideVersion
     install_ops
     #add_sudoer
-    Safesshd
+    # Safesshd
     #安全化 ssh
     # 扩大文件描述符
     Openfile
