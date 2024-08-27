@@ -156,7 +156,7 @@ function hosts_hostname(){
 ##### 开机启动项精简 ################################################
 function boot_centos7(){
     Msg  "boot_centos7 start..........."
-    SVCS="wpa_supplicant alsa-state cups abrt-xorg abrt-oops avahi-daemon atd abrtd  packagekit getty@tty1 libstoragemgmt NetworkManager vmtoolsd upower udisks2 smartd rtkit-daemon packagekit ModemManager libvirtd gssproxy gdm colord  accounts-daemon"
+    SVCS="wpa_supplicant alsa-state cups abrt-xorg abrt-oops avahi-daemon atd abrtd  packagekit getty@tty1 libstoragemgmt  vmtoolsd upower udisks2 smartd rtkit-daemon packagekit ModemManager libvirtd gssproxy gdm colord  accounts-daemon"
 
  function disablesvc(){
     echo "Stoping/Disablingservice $SVC"
@@ -594,14 +594,14 @@ function main(){
     #check_folder /backup
     #关闭selinux
     selinux
-    # boot_centos7
+    #boot_centos7
     # 关闭防火墙
     close_iptables
     #清除版本信息（安全操作） 一般不开启
     #HideVersion
     install_ops
     #add_sudoer
-    # Safesshd
+    Safesshd
     #安全化 ssh
     # 扩大文件描述符
     Openfile
