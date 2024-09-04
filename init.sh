@@ -420,56 +420,56 @@ function pre_installation_settings(){
     #Remove Packages
 
 }
-# download Centos-Base.repo
-function config_yum(){
-    Repo_ali_base=CentOS-Base.repo.$(date +%F)
-    Repo_ali_epel=epel.repo.$(date +%F)
-    Lin_Path=/tmp
-    if ! curl -o ${Lin_Path}/${Repo_ali_base} https://repo.huaweicloud.com/repository/conf/CentOS-7-reg.repo >/dev/null 2>&1 ; then
-	   log_error "please config network "
-       shell_unlock
-	   exit 1
-    fi
-    #对比本地 Centos-Base.repo 与下载的MD5值是否相等
-    Yum_Path='/etc/yum.repos.d'
-    Repo_Base='CentOS-Base.repo'
-    Repo_epel='epel.repo'
-    if [  -s ${Yum_Path}/${Repo_Base} ]; then
-	   md5sum_check ${Lin_Path}/${Repo_ali_base}  ${Yum_Path}/${Repo_Base}
-	   if [ $? -eq 0 ] ;then 
-	       log_info "hw yum source  completed ! "
-	   else 
-	       mv ${Yum_Path}/${Repo_Base}{,.$(date +%F)}
-	       mv ${Lin_Path}/${Repo_ali_base} ${Yum_Path}/${Repo_Base}
-	   fi
-    else
-	   mv ${Yum_Path}/${Repo_Base}{,.$(date +%F)}
-	   mv ${Lin_Path}/${Repo_ali_base} ${Yum_Path}/${Repo_Base}
-        Msg "hw yum CentOS-Base.repo source  completed ! "
-    fi
-    # if ! curl -o ${Lin_Path}/${Repo_ali_epel} http://mirrors.aliyun.com/repo/epel-7.repo >/dev/null 2>&1 ; then
-	#    log_error "please config network "
-    #    shell_unlock
-	#    exit 1
-    # fi
-    # if [  -s ${Yum_Path}/${Repo_epel} ]; then
-	#    md5sum_check ${Lin_Path}/${Repo_ali_epel}  ${Yum_Path}/${Repo_epel}
-	#    if [ $? -eq 0 ];then
-	#        log_info "ali yum epel source  completed ! "
-	#    else
-	#        mv ${Yum_Path}/${Repo_epel}{,.$(date +%F)}
-	#        mv ${Lin_Path}/${Repo_ali_epel} ${Yum_Path}/${Repo_epel}
-	#    fi
-    # else
-	#    mv ${Lin_Path}/${Repo_ali_epel} ${Yum_Path}/${Repo_epel}
-	#    Msg "ali yum epel source  completed ! "
-    # fi
-    if [ ! -f  /etc/yum.repo.d/test ];then 
-        yum clean all  >/dev/null 2>&1 && echo "1" > /etc/yum.repos.d/test
-        Msg "yum is  completed! "
-    fi
-    Msg "$SOFT installed"
-}
+# # download Centos-Base.repo
+# function config_yum(){
+#     Repo_ali_base=CentOS-Base.repo.$(date +%F)
+#     Repo_ali_epel=epel.repo.$(date +%F)
+#     Lin_Path=/tmp
+#     if ! curl -o ${Lin_Path}/${Repo_ali_base} https://repo.huaweicloud.com/repository/conf/CentOS-7-reg.repo >/dev/null 2>&1 ; then
+# 	   log_error "please config network "
+#        shell_unlock
+# 	   exit 1
+#     fi
+#     #对比本地 Centos-Base.repo 与下载的MD5值是否相等
+#     Yum_Path='/etc/yum.repos.d'
+#     Repo_Base='CentOS-Base.repo'
+#     Repo_epel='epel.repo'
+#     if [  -s ${Yum_Path}/${Repo_Base} ]; then
+# 	   md5sum_check ${Lin_Path}/${Repo_ali_base}  ${Yum_Path}/${Repo_Base}
+# 	   if [ $? -eq 0 ] ;then 
+# 	       log_info "hw yum source  completed ! "
+# 	   else 
+# 	       mv ${Yum_Path}/${Repo_Base}{,.$(date +%F)}
+# 	       mv ${Lin_Path}/${Repo_ali_base} ${Yum_Path}/${Repo_Base}
+# 	   fi
+#     else
+# 	   mv ${Yum_Path}/${Repo_Base}{,.$(date +%F)}
+# 	   mv ${Lin_Path}/${Repo_ali_base} ${Yum_Path}/${Repo_Base}
+#         Msg "hw yum CentOS-Base.repo source  completed ! "
+#     fi
+#     # if ! curl -o ${Lin_Path}/${Repo_ali_epel} http://mirrors.aliyun.com/repo/epel-7.repo >/dev/null 2>&1 ; then
+# 	#    log_error "please config network "
+#     #    shell_unlock
+# 	#    exit 1
+#     # fi
+#     # if [  -s ${Yum_Path}/${Repo_epel} ]; then
+# 	#    md5sum_check ${Lin_Path}/${Repo_ali_epel}  ${Yum_Path}/${Repo_epel}
+# 	#    if [ $? -eq 0 ];then
+# 	#        log_info "ali yum epel source  completed ! "
+# 	#    else
+# 	#        mv ${Yum_Path}/${Repo_epel}{,.$(date +%F)}
+# 	#        mv ${Lin_Path}/${Repo_ali_epel} ${Yum_Path}/${Repo_epel}
+# 	#    fi
+#     # else
+# 	#    mv ${Lin_Path}/${Repo_ali_epel} ${Yum_Path}/${Repo_epel}
+# 	#    Msg "ali yum epel source  completed ! "
+#     # fi
+#     if [ ! -f  /etc/yum.repo.d/test ];then 
+#         yum clean all  >/dev/null 2>&1 && echo "1" > /etc/yum.repos.d/test
+#         Msg "yum is  completed! "
+#     fi
+#     Msg "$SOFT installed"
+# }
 function install_tools(){
  	SOFT=" lrzsz dos2unix  gcc bc tcl  expect rsync chrony vim \
       wget bash-completion lrzsz nmap  tree htop iftop \
