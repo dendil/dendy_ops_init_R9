@@ -618,7 +618,7 @@ function main(){
     if [ "$1"  == "out" ];then
         install_tools
     else
-        config_yum
+        #config_yum
         install_tools
     fi
 
