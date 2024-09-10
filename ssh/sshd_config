@@ -160,5 +160,5 @@ Subsystem	sftp	/usr/libexec/openssh/sftp-server
 #	ForceCommand cvs server
 #timeout to out
 
-ClientAliveInterval 300
-ClientAliveCountMax 5
+ClientAliveInterval 301
+ClientAliveCountMax 3
